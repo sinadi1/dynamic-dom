@@ -12,6 +12,7 @@ Checker with **0 errors and 0 warnings** (`npm run validate`).
 | Page | Demonstrates |
 |---|---|
 | `index.html` | Landmarks, KPI `<article>` cards, data table, activity feed, `<aside>` |
+| `products.html` | **Store**: live REST API client (search, categories, sorting, cart, skeletons, error banners) |
 | `users.html` | Searchable data table, row actions, modal dialogs (form + alert dialog) |
 | `settings.html` | Full form: fieldsets, labels, hints, validation, radios, checkboxes, select/optgroup, textarea counter |
 | `accessibility.html` | Article with sectioned headings |
@@ -25,6 +26,12 @@ Checker with **0 errors and 0 warnings** (`npm run validate`).
 │   ├── dialog-add-user.html, dialog-confirm-delete.html
 ├── src/               page-specific <main> content
 ├── css/style.css      design tokens + mobile-first layout + components
+├── js/                ES modules for the Store page
+│   ├── app.js         entry point: wires everything together
+│   ├── api.js         REST client (async/await, timeout, ApiError, cache)
+│   ├── state.js       localStorage store: cart + preferences
+│   ├── filters.js     pure search / category / sort functions
+│   └── ui.js          DOM rendering (skeletons, banners, grid, cart)
 ├── js/components/     modal.js, form-validation.js, char-count.js, theme-toggle.js
 ├── build.py           stitches components + src into the final pages
 └── docs/screenshots/
@@ -67,3 +74,22 @@ One stylesheet, organised as: tokens, base, layout, components, utilities.
 - **No horizontal page scroll:** grids use `minmax(0, 1fr)`, long content wraps, and data tables scroll inside their own `.table-wrap` box.
 
 **Tested:** all 4 pages x 4 widths (320, 768, 1024, 1440px) x light and dark = 32 combinations, with `scrollWidth <= clientWidth` on every one. Screenshots are in `docs/screenshots/` (`index-320px.png` ... `index-1440px.png`, `users-*`, dark theme and mobile form errors).
+
+## Dynamic JavaScript & REST API client (`products.html`)
+
+Data comes from the public [FakeStoreAPI](https://fakestoreapi.com) (`/products`, `/products/categories`).
+
+| Requirement | Where |
+|---|---|
+| `async/await` fetch calls | `js/api.js` (`request`, `cachedGet`), `js/app.js` (`load`, `Promise.all`) |
+| Live search, category buttons, sorting without reload | `js/filters.js` + `js/app.js`; search is debounced (200 ms) |
+| `localStorage` state | `js/state.js`: cart, search/category/sort preferences, and a 5-minute API response cache |
+| Error handling | `ApiError` with friendly messages (HTTP error, timeout, offline, unreadable data); `role="alert"` banner with **Try again**; falls back to stale cached data with a warning banner |
+| Loading skeletons | `renderSkeleton()` while fetching, with `aria-busy` on the grid |
+
+Design choices:
+- **No `innerHTML` with API data**: nodes are built with `createElement`/`textContent`, so remote content cannot inject markup.
+- **Corrupted storage is harmless**: stored values are sanitised on read, and every storage call is wrapped in `try/catch`.
+- **Keyboard focus is preserved** when the cart and category buttons re-render.
+
+Because the page uses ES modules, open it through a web server (Live Server or `npm start`), not by double-clicking the file.

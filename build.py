@@ -19,6 +19,13 @@ PAGES = {
         "dialogs": [],
         "sidebar": [("#metrics", "Key metrics"), ("#orders", "Latest orders"), ("#activity", "Recent activity")],
     },
+    "products": {
+        "title": "Store - Northwind Admin",
+        "scripts": [],
+        "module": "js/app.js",
+        "dialogs": [],
+        "sidebar": [("#filters", "Search and filters"), ("#products", "Products"), ("#cart", "Your cart")],
+    },
     "users": {
         "title": "Users - Northwind Admin",
         "scripts": ["modal", "form-validation"],
@@ -73,6 +80,8 @@ for key, cfg in PAGES.items():
     dialogs = "\n".join(indent(read(f"components/{d}.html"), 4) for d in cfg["dialogs"])
     main = main.replace("    <!--DIALOGS-->", dialogs)
     scripts = "".join(f'  <script src="js/components/{s}.js" defer></script>\n' for s in cfg["scripts"] + ["theme-toggle"])
+    if cfg.get("module"):
+        scripts += f'  <script type="module" src="{cfg["module"]}"></script>\n'
     html = TEMPLATE.format(
         title=cfg["title"],
         header=indent(header),
