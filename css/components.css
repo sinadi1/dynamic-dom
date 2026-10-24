@@ -79,6 +79,7 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
 .choice label { margin: 0; font-weight: 400; }
 .form-actions { display: flex; gap: 0.75rem; }
 .form-status { font-weight: 600; color: var(--success); }
+.form-status.error-message { color: var(--danger); }
 
 .toolbar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; justify-content: space-between; margin-bottom: 1rem; }
 .toolbar form { display: flex; gap: 0.5rem; align-items: end; }
