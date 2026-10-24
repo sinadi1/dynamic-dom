@@ -24,8 +24,8 @@ Checker with **0 errors and 0 warnings** (`npm run validate`).
 │   ├── header.html, sidebar.html, footer.html
 │   ├── dialog-add-user.html, dialog-confirm-delete.html
 ├── src/               page-specific <main> content
-├── css/               base.css (layout, tokens) + components.css
-├── js/components/     modal.js, form-validation.js, char-count.js
+├── css/style.css      design tokens + mobile-first layout + components
+├── js/components/     modal.js, form-validation.js, char-count.js, theme-toggle.js
 ├── build.py           stitches components + src into the final pages
 └── docs/screenshots/
 ```
@@ -55,3 +55,15 @@ npm install && npm run validate   # needs Java; runs the W3C Nu validator
 Validation runs on submit rather than on blur. Showing an error on blur
 shifts the layout mid-click and can swallow the Submit click, and it is
 noisier for screen reader users.
+
+## Responsive design tokens & mobile-first CSS (`css/style.css`)
+
+One stylesheet, organised as: tokens, base, layout, components, utilities.
+
+- **Design tokens in `:root`:** brand colours, a fluid type scale (`clamp()`), spacing scale (`--space-1` to `--space-6`), radii, shadows, blur and transition tokens.
+- **Mobile-first breakpoints** (`min-width`): base = 320px (single column, sidebar becomes a row of pills), **768px** (2-column cards, 2-column forms), **1024px** (sidebar column, 4-column cards, 2fr/1fr content), **1440px** (wider sidebar, 3-column forms, capped content width).
+- **Modern styling:** glassmorphism (`backdrop-filter` blur on header, sidebar, cards, tables, fieldsets), soft shadows, hover transitions (cards lift, buttons, rows, links) that switch off under `prefers-reduced-motion`.
+- **Light/dark themes** through CSS variables: follows the OS setting by default, and the header toggle overrides and remembers the choice (`data-theme` on `<html>`, saved in `localStorage`).
+- **No horizontal page scroll:** grids use `minmax(0, 1fr)`, long content wraps, and data tables scroll inside their own `.table-wrap` box.
+
+**Tested:** all 4 pages x 4 widths (320, 768, 1024, 1440px) x light and dark = 32 combinations, with `scrollWidth <= clientWidth` on every one. Screenshots are in `docs/screenshots/` (`index-320px.png` ... `index-1440px.png`, `users-*`, dark theme and mobile form errors).

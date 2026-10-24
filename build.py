@@ -45,8 +45,7 @@ TEMPLATE = """<!DOCTYPE html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -73,7 +72,7 @@ for key, cfg in PAGES.items():
     main = read(f"src/{key}.main.html")
     dialogs = "\n".join(indent(read(f"components/{d}.html"), 4) for d in cfg["dialogs"])
     main = main.replace("    <!--DIALOGS-->", dialogs)
-    scripts = "".join(f'  <script src="js/components/{s}.js" defer></script>\n' for s in cfg["scripts"])
+    scripts = "".join(f'  <script src="js/components/{s}.js" defer></script>\n' for s in cfg["scripts"] + ["theme-toggle"])
     html = TEMPLATE.format(
         title=cfg["title"],
         header=indent(header),
