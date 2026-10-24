@@ -1,0 +1,41 @@
+<dialog id="add-user-dialog" aria-labelledby="add-user-title">
+  <div class="dialog-header">
+    <h2 id="add-user-title">Add a user</h2>
+    <button type="button" class="btn btn-secondary btn-small" data-close-dialog aria-label="Close dialog"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <form id="add-user-form" data-validate novalidate data-success-message="User added.">
+    <div class="dialog-body">
+      <p>Fields marked <span class="required-mark" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+      <div class="field">
+        <label for="new-name">Full name <span class="required-mark" aria-hidden="true">*</span></label>
+        <input type="text" id="new-name" name="name" autocomplete="off" required aria-describedby="new-name-error" data-label="Full name">
+        <span class="error-message" id="new-name-error"></span>
+      </div>
+      <div class="field">
+        <label for="new-email">Email address <span class="required-mark" aria-hidden="true">*</span></label>
+        <input type="email" id="new-email" name="email" autocomplete="off" required aria-describedby="new-email-error" data-label="Email address">
+        <span class="error-message" id="new-email-error"></span>
+      </div>
+      <div class="field">
+        <label for="new-role">Role <span class="required-mark" aria-hidden="true">*</span></label>
+        <select id="new-role" name="role" required aria-describedby="new-role-error" data-label="Role">
+          <option value="">Choose a role</option>
+          <option value="admin">Administrator</option>
+          <option value="editor">Editor</option>
+          <option value="viewer">Viewer</option>
+        </select>
+        <span class="error-message" id="new-role-error"></span>
+      </div>
+      <fieldset>
+        <legend>Initial status</legend>
+        <div class="choice"><input type="radio" id="status-active" name="status" value="active" checked><label for="status-active">Active</label></div>
+        <div class="choice"><input type="radio" id="status-pending" name="status" value="pending"><label for="status-pending">Pending invitation</label></div>
+      </fieldset>
+      <p role="status" data-form-status></p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" data-close-dialog>Cancel</button>
+      <button type="submit" class="btn">Add user</button>
+    </div>
+  </form>
+</dialog>

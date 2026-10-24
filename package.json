@@ -1,0 +1,14 @@
+{
+  "name": "semantic-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Semantic HTML5 and accessible component architecture for an enterprise dashboard",
+  "scripts": {
+    "build": "python3 build.py",
+    "validate": "vnu-jar --also-check-css *.html css/*.css",
+    "start": "python3 -m http.server 8080"
+  },
+  "devDependencies": {
+    "vnu-jar": "^26.10.12"
+  }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account settings - Northwind Admin</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html">Northwind Admin</a>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="settings.html" aria-current="page">Settings</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <p class="visually-hidden">Signed in as Priya Shah</p>
+      <span aria-hidden="true">Priya Shah</span>
+    </div>
+  </header>
+  <aside class="sidebar" aria-label="Sidebar">
+    <nav aria-labelledby="sidebar-heading">
+      <h2 id="sidebar-heading">On this page</h2>
+      <ul>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#notifications">Notifications</a></li>
+        <li><a href="#about">About you</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main id="main-content" class="main-content" tabindex="-1">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Settings</li>
+      </ol>
+    </nav>
+    <h1>Account settings</h1>
+    <p>Fields marked <span class="required-mark" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+
+    <form id="settings-form" class="form-grid" data-validate novalidate data-success-message="Settings saved.">
+
+      <fieldset id="profile">
+        <legend id="profile-heading">Profile</legend>
+        <div class="field">
+          <label for="first-name">First name <span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="text" id="first-name" name="first-name" autocomplete="given-name" required aria-describedby="first-name-error" data-label="First name">
+          <span class="error-message" id="first-name-error"></span>
+        </div>
+        <div class="field">
+          <label for="last-name">Last name <span class="required-mark" aria-hidden="true">*</span></label>
+          <input type="text" id="last-name" name="last-name" autocomplete="family-name" required aria-describedby="last-name-error" data-label="Last name">
+          <span class="error-message" id="last-name-error"></span>
+        </div>
+        <div class="field">
+          <label for="email">Email address <span class="required-mark" aria-hidden="true">*</span></label>
+          <span class="hint" id="email-hint">We send account notices here.</span>
+          <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-hint email-error" data-label="Email address">
+          <span class="error-message" id="email-error"></span>
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <span class="hint" id="phone-hint">Digits and spaces only, with an optional leading +.</span>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" pattern="\+?[0-9 ]{7,15}" aria-describedby="phone-hint phone-error" data-label="Phone number" data-pattern-message="Enter 7 to 15 digits, optionally starting with +.">
+          <span class="error-message" id="phone-error"></span>
+        </div>
+        <div class="field">
+          <label for="department">Department <span class="required-mark" aria-hidden="true">*</span></label>
+          <select id="department" name="department" required aria-describedby="department-error" data-label="Department">
+            <option value="">Choose a department</option>
+            <optgroup label="Operations">
+              <option value="logistics">Logistics</option>
+              <option value="support">Customer support</option>
+            </optgroup>
+            <optgroup label="Business">
+              <option value="sales">Sales</option>
+              <option value="finance">Finance</option>
+            </optgroup>
+          </select>
+          <span class="error-message" id="department-error"></span>
+        </div>
+        <div class="field">
+          <label for="start-date">Start date</label>
+          <input type="date" id="start-date" name="start-date" min="2000-01-01" max="2026-12-31">
+        </div>
+      </fieldset>
+
+      <fieldset id="security">
+        <legend id="security-heading">Security</legend>
+        <div class="field">
+          <label for="password">New password <span class="required-mark" aria-hidden="true">*</span></label>
+          <span class="hint" id="password-hint">At least 12 characters, with a letter and a number.</span>
+          <input type="password" id="password" name="password" autocomplete="new-password" required minlength="12" pattern="(?=.*[A-Za-z])(?=.*[0-9]).{12,}" aria-describedby="password-hint password-error" data-label="Password" data-pattern-message="Use at least 12 characters, including a letter and a number.">
+          <span class="error-message" id="password-error"></span>
+        </div>
+        <div class="field">
+          <label for="timeout">Session timeout (minutes)</label>
+          <input type="number" id="timeout" name="timeout" min="5" max="120" step="5" value="30" inputmode="numeric">
+        </div>
+      </fieldset>
+
+      <fieldset id="notifications">
+        <legend id="notifications-heading">Notifications</legend>
+        <fieldset>
+          <legend>Email digest frequency</legend>
+          <div class="choice"><input type="radio" id="digest-daily" name="digest" value="daily"><label for="digest-daily">Daily</label></div>
+          <div class="choice"><input type="radio" id="digest-weekly" name="digest" value="weekly" checked><label for="digest-weekly">Weekly</label></div>
+          <div class="choice"><input type="radio" id="digest-never" name="digest" value="never"><label for="digest-never">Never</label></div>
+        </fieldset>
+        <fieldset>
+          <legend>Notify me about</legend>
+          <div class="choice"><input type="checkbox" id="notify-orders" name="notify" value="orders" checked><label for="notify-orders">New orders</label></div>
+          <div class="choice"><input type="checkbox" id="notify-tickets" name="notify" value="tickets"><label for="notify-tickets">Support tickets</label></div>
+          <div class="choice"><input type="checkbox" id="notify-security" name="notify" value="security" checked><label for="notify-security">Security alerts</label></div>
+        </fieldset>
+      </fieldset>
+
+      <fieldset id="about">
+        <legend id="about-heading">About you</legend>
+        <div class="field">
+          <label for="bio">Short bio</label>
+          <span class="hint" id="bio-hint">Shown on your public profile.</span>
+          <textarea id="bio" name="bio" rows="5" maxlength="300" aria-describedby="bio-hint bio-count" data-count-target="bio-count"></textarea>
+          <span class="hint" id="bio-count"></span>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Save settings</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+      </div>
+      <p role="status" data-form-status></p>
+    </form>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2026 Northwind Traders. Demo dashboard for accessibility practice.</p>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="accessibility.html">Accessibility statement</a></li>
+        <li><a href="settings.html">Account settings</a></li>
+      </ul>
+    </nav>
+  </footer>
+  <script src="js/components/form-validation.js" defer></script>
+  <script src="js/components/char-count.js" defer></script>
+</body>
+</html>

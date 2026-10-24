@@ -1,0 +1,90 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Users</li>
+      </ol>
+    </nav>
+    <h1>Users</h1>
+
+    <section id="user-tools" aria-labelledby="tools-heading">
+      <h2 id="tools-heading" class="visually-hidden">Search and actions</h2>
+      <div class="toolbar">
+        <form role="search" aria-label="Search users">
+          <div class="field">
+            <label for="user-search">Search by name or email</label>
+            <input type="search" id="user-search" name="q" autocomplete="off">
+          </div>
+          <button type="submit" class="btn">Search</button>
+        </form>
+        <button type="button" class="btn" data-open-dialog="add-user-dialog">Add user</button>
+      </div>
+    </section>
+
+    <section id="user-table" aria-labelledby="table-heading">
+      <h2 id="table-heading" class="visually-hidden">User list</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Team members, 5 of 5 shown</caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
+              <th scope="col">Last active</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Priya Shah</th><td>priya@example.com</td><td>Administrator</td>
+              <td><span class="badge badge-active">Active</span></td>
+              <td><time datetime="2026-10-24">Today</time></td>
+              <td><button type="button" class="btn btn-secondary btn-small" data-open-dialog="add-user-dialog">Edit<span class="visually-hidden"> Priya Shah</span></button></td>
+            </tr>
+            <tr>
+              <th scope="row">Amara Okafor</th><td>amara@example.com</td><td>Editor</td>
+              <td><span class="badge badge-pending">Pending</span></td>
+              <td><time datetime="2026-10-22">2 days ago</time></td>
+              <td>
+                <button type="button" class="btn btn-secondary btn-small" data-open-dialog="add-user-dialog">Edit<span class="visually-hidden"> Amara Okafor</span></button>
+                <button type="button" class="btn btn-danger btn-small" data-open-dialog="delete-dialog">Remove<span class="visually-hidden"> Amara Okafor</span></button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Daniel Kim</th><td>daniel@example.com</td><td>Viewer</td>
+              <td><span class="badge badge-active">Active</span></td>
+              <td><time datetime="2026-10-23">Yesterday</time></td>
+              <td>
+                <button type="button" class="btn btn-secondary btn-small" data-open-dialog="add-user-dialog">Edit<span class="visually-hidden"> Daniel Kim</span></button>
+                <button type="button" class="btn btn-danger btn-small" data-open-dialog="delete-dialog">Remove<span class="visually-hidden"> Daniel Kim</span></button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Elena Petrova</th><td>elena@example.com</td><td>Editor</td>
+              <td><span class="badge badge-inactive">Inactive</span></td>
+              <td><time datetime="2026-09-30">3 weeks ago</time></td>
+              <td>
+                <button type="button" class="btn btn-secondary btn-small" data-open-dialog="add-user-dialog">Edit<span class="visually-hidden"> Elena Petrova</span></button>
+                <button type="button" class="btn btn-danger btn-small" data-open-dialog="delete-dialog">Remove<span class="visually-hidden"> Elena Petrova</span></button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Tomás Alvarez</th><td>tomas@example.com</td><td>Viewer</td>
+              <td><span class="badge badge-active">Active</span></td>
+              <td><time datetime="2026-10-24">Today</time></td>
+              <td>
+                <button type="button" class="btn btn-secondary btn-small" data-open-dialog="add-user-dialog">Edit<span class="visually-hidden"> Tomás Alvarez</span></button>
+                <button type="button" class="btn btn-danger btn-small" data-open-dialog="delete-dialog">Remove<span class="visually-hidden"> Tomás Alvarez</span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <nav id="pagination" aria-label="Pagination">
+      <p>Page 1 of 1</p>
+    </nav>
+
+    <!--DIALOGS-->

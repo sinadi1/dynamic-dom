@@ -1,0 +1,81 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Dashboard</li>
+      </ol>
+    </nav>
+    <h1>Dashboard overview</h1>
+
+    <section id="metrics" aria-labelledby="metrics-heading">
+      <h2 id="metrics-heading" class="visually-hidden">Key metrics</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Active users</h3>
+          <p class="metric">1,284</p>
+          <p class="delta">Up 4.2% from last week</p>
+        </article>
+        <article class="card">
+          <h3>Monthly revenue</h3>
+          <p class="metric">$48,920</p>
+          <p class="delta">Up 1.8% from last month</p>
+        </article>
+        <article class="card">
+          <h3>Open tickets</h3>
+          <p class="metric">37</p>
+          <p class="delta negative">Up 6 since yesterday</p>
+        </article>
+        <article class="card">
+          <h3>Uptime</h3>
+          <p class="metric">99.97%</p>
+          <p class="delta">Within target</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="two-col">
+      <div>
+        <section id="orders" aria-labelledby="orders-heading">
+          <h2 id="orders-heading">Latest orders</h2>
+          <div class="table-wrap">
+            <table>
+              <caption>Five most recent orders, newest first</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Order</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" class="num">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">#10482</th><td>Lena Fischer</td><td><span class="badge badge-active">Shipped</span></td><td class="num">$129.00</td></tr>
+                <tr><th scope="row">#10481</th><td>Marcus Bell</td><td><span class="badge badge-pending">Processing</span></td><td class="num">$54.50</td></tr>
+                <tr><th scope="row">#10480</th><td>Aiko Tanaka</td><td><span class="badge badge-active">Shipped</span></td><td class="num">$310.25</td></tr>
+                <tr><th scope="row">#10479</th><td>Omar Haddad</td><td><span class="badge badge-inactive">Cancelled</span></td><td class="num">$78.00</td></tr>
+                <tr><th scope="row">#10478</th><td>Sofia Rossi</td><td><span class="badge badge-active">Shipped</span></td><td class="num">$201.80</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="activity" aria-labelledby="activity-heading">
+          <h2 id="activity-heading">Recent activity</h2>
+          <div class="panel">
+            <ul class="activity-list">
+              <li><article><h3>New user invited</h3><p>Amara Okafor was invited as an Editor. <time datetime="2026-10-24T09:15">9:15 AM</time></p></article></li>
+              <li><article><h3>Report exported</h3><p>Quarterly sales report exported by Priya Shah. <time datetime="2026-10-24T08:40">8:40 AM</time></p></article></li>
+              <li><article><h3>Settings changed</h3><p>Email digest changed to weekly. <time datetime="2026-10-23T16:05">Yesterday, 4:05 PM</time></p></article></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <aside class="panel" aria-labelledby="tips-heading">
+        <h2 id="tips-heading">Quick tips</h2>
+        <ul>
+          <li>Press <kbd>Tab</kbd> to move between controls.</li>
+          <li>Use the skip link to jump past the navigation.</li>
+          <li>Dialogs close with <kbd>Esc</kbd>.</li>
+        </ul>
+      </aside>
+    </div>
